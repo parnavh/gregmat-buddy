@@ -4,6 +4,7 @@ export default defineContentScript({
   matches: ["*://*.prepswift.com/*"],
   runAt: "document_idle",
   main() {
+    if (window.location.toString().search("gre-quant")) main();
     window.addEventListener("locationChange", () => {
       if (window.location.toString().search("gre-quant")) main();
     });
@@ -19,15 +20,15 @@ async function main() {
     return;
   }
 
-  let summary = document.getElementById("pro-stats") as HTMLParagraphElement;
+  let summary = document.getElementById("buddy-stats") as HTMLParagraphElement;
 
   if (!summary) {
-    let stats = header
+    summary = header
       .querySelector("p:nth-child(2)")!
       .cloneNode() as HTMLParagraphElement;
-    stats.textContent = "loading...";
-    stats.setAttribute("id", "pro-stats");
-    header.appendChild(stats);
+    summary.textContent = "loading...";
+    summary.setAttribute("id", "buddy-stats");
+    header.appendChild(summary);
   }
 
   calculate_time(container, summary);
@@ -36,13 +37,14 @@ async function main() {
     .querySelectorAll(".inline.transition-all.duration-300")
     .forEach((but) => {
       (but as HTMLButtonElement).onclick = () => {
-        setTimeout(calculate_time, 2000);
+        setTimeout(() => {
+          calculate_time(container, summary);
+        }, 2000);
       };
     });
 }
 
 function calculate_time(container: Element, summary: HTMLParagraphElement) {
-  console.log("hi");
   let rootTotalCount = 0,
     rootDoneCount = 0,
     rootTotalSecs = 0,
