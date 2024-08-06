@@ -1,8 +1,7 @@
 {
   "name": "gregmat-buddy",
   "description": "Adds quality of life features to gregmat/prepswift",
-  "private": true,
-  "version": "0.0.0",
+  "version": "0.1.0",
   "scripts": {
     "dev": "wxt",
     "dev:firefox": "wxt -b firefox",
@@ -15,11 +14,15 @@
   },
   "devDependencies": {
     "@tsconfig/svelte": "^5.0.4",
+    "@types/vimeo__player": "^2.18.3",
     "@wxt-dev/module-svelte": "^1.0.0",
     "svelte": "^4.2.18",
     "svelte-check": "^3.8.4",
     "tslib": "^2.6.3",
     "typescript": "^5.5.4",
     "wxt": "^0.19.1"
+  },
+  "dependencies": {
+    "@vimeo/player": "^2.23.0"
   }
 }
