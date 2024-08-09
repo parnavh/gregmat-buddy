@@ -108,7 +108,9 @@ function getText(
   }
 
   if (doneCount == 0) {
-    return "Get Started!";
+    return `Lectures: ${totalCount} | Mins: ${(totalSecs / 60).toFixed(
+      2
+    )} | Hours: ${(totalSecs / 3600).toFixed(2)}`;
   }
 
   return `Lectures: ${doneCount}/${totalCount} | Mins: ${(
