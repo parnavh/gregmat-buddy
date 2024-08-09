@@ -59,7 +59,7 @@ function calculate_time(container: Element, summary: HTMLParagraphElement) {
     let done = div.querySelectorAll(".video-duration-badge.text-purple-400");
     let allTimestamps = div.querySelectorAll(".video-duration-badge");
     let doneTimestamps = div.querySelectorAll(
-      ".video-duration-badge.text-purple-400",
+      ".video-duration-badge.text-purple-400"
     );
 
     let totalSecs = 0,
@@ -89,9 +89,31 @@ function calculate_time(container: Element, summary: HTMLParagraphElement) {
     }
 
     title.textContent =
-      text +
-      ` - Lectures: ${done.length}/${all.length} | Mins: ${(doneSecs / 60).toFixed(2)}/${(totalSecs / 60).toFixed(2)}`;
+      text + " - " + getText(done.length, all.length, doneSecs, totalSecs);
   });
 
-  summary.textContent = `Lectures: ${rootDoneCount}/${rootTotalCount} | Mins: ${(rootDoneSecs / 60).toFixed(2)}/${(rootTotalSecs / 60).toFixed(2)} | Hours: ${(rootDoneSecs / 3600).toFixed(2)}/${(rootTotalSecs / 3600).toFixed(2)}`;
+  summary.textContent =
+    "Total - " +
+    getText(rootDoneCount, rootTotalCount, rootDoneSecs, rootTotalSecs);
+}
+
+function getText(
+  doneCount: number,
+  totalCount: number,
+  doneSecs: number,
+  totalSecs: number
+): string {
+  if (doneCount == totalCount) {
+    return "Done!";
+  }
+
+  if (doneCount == 0) {
+    return "Get Started!";
+  }
+
+  return `Lectures: ${doneCount}/${totalCount} | Mins: ${(
+    doneSecs / 60
+  ).toFixed(2)}/${(totalSecs / 60).toFixed(2)} | Hours: ${(
+    doneSecs / 3600
+  ).toFixed(2)}/${(totalSecs / 3600).toFixed(2)}`;
 }
