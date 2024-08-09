@@ -1,4 +1,4 @@
-name: Version
+name: Release
 
 on:
   push:
@@ -42,6 +42,6 @@ jobs:
         with:
           commit: "chore(release): 📦 version packages"
           title: "chore(release): 📦  version packages"
-          publish: pnpm changeset publish
+          publish: pnpm run release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
