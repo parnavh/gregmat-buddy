@@ -12,13 +12,6 @@ jobs:
     name: Release
     runs-on: ubuntu-latest
 
-    permissions:
-      id-token: write
-      contents: write
-      packages: write
-      pull-requests: write
-      issues: read
-
     steps:
       - name: Checkout Repo
         uses: actions/checkout@v4
@@ -42,6 +35,6 @@ jobs:
         with:
           commit: "chore(release): 📦 version packages"
           title: "chore(release): 📦  version packages"
-          publish: pnpm run release
+          publish: pnpm changeset tag
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.RELEASE_GITHUB_TOKEN }}
