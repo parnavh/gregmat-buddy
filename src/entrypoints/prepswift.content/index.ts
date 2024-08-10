@@ -44,11 +44,16 @@ async function main() {
     });
 }
 
-function calculate_time(container: Element, summary: HTMLParagraphElement) {
+async function calculate_time(
+  container: Element,
+  summary: HTMLParagraphElement
+) {
   let rootTotalCount = 0,
     rootDoneCount = 0,
     rootTotalSecs = 0,
     rootDoneSecs = 0;
+
+  await waitForElement(".video-duration-badge");
 
   Array.from(container.children).forEach((div) => {
     let title = div.querySelector("h2");
