@@ -1,5 +1,11 @@
 # gregmat-buddy
 
+## 0.1.3
+
+### Patch Changes
+
+- 1ade63f: fixed prepswift script executing before content load
+
 ## 0.1.2
 
 ### Patch Changes
