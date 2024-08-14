@@ -1,5 +1,5 @@
-import { registerEmitters, registerLocationChange } from "./emitters";
-import { vimeoChanges } from "./vimeo";
+import { registerEmitters } from "./emitters";
+import { removeBanner, vimeoChanges } from "./prefs";
 
 export default defineContentScript({
   matches: ["*://*.prepswift.com/*", "*://*.gregmat.com/*"],
@@ -7,5 +7,6 @@ export default defineContentScript({
     registerEmitters();
 
     vimeoChanges();
+    removeBanner();
   },
 });
