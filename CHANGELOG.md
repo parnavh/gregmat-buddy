@@ -1,5 +1,15 @@
 # gregmat-buddy
 
+## 0.2.0
+
+### Minor Changes
+
+- 6b22d95: Added banner remove persistence
+
+### Patch Changes
+
+- 7cb9421: improved prepswift calculation trigger
+
 ## 0.1.3
 
 ### Patch Changes
