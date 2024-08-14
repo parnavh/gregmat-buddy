@@ -33,14 +33,14 @@ async function main() {
 
   calculate_time(container, summary);
 
+  const observer = new MutationObserver(() =>
+    calculate_time(container, summary)
+  );
+
   document
-    .querySelectorAll(".inline.transition-all.duration-300")
-    .forEach((but) => {
-      (but as HTMLButtonElement).onclick = () => {
-        setTimeout(() => {
-          calculate_time(container, summary);
-        }, 2000);
-      };
+    .querySelectorAll(".cursor-pointer.linkHolder.font-semibold")
+    .forEach((tag) => {
+      observer.observe(tag, { attributes: true });
     });
 }
 
