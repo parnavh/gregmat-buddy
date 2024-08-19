@@ -1,5 +1,11 @@
 # gregmat-buddy
 
+## 0.2.1
+
+### Patch Changes
+
+- c9dae34: updated documentation
+
 ## 0.2.0
 
 ### Minor Changes
