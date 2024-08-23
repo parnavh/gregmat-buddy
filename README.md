@@ -9,6 +9,9 @@ Adds useful quality of life features to the GregMat and PrepSwift website.
 - Adds progress stats for PrepSwift
 - Remembers your playback speed on GregMat and PrepSwift
 - Remembers if you dismissed a banner at the top of the website.
+- Adds custom keybinds for vocab mountain
+  - Moves to next word automatically after you mark it
+  - Adds vim keybinds for cursor movement
 
 ## Install
 

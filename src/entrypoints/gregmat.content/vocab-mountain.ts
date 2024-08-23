@@ -21,19 +21,19 @@ function registerKeybinds() {
     let key = null;
 
     switch (ev.key) {
-      case String(ev.key.match(/j/i)):
+      case String(ev.key.match(/^j$/i)):
         key = keys.down;
         break;
 
-      case String(ev.key.match(/k/i)):
+      case String(ev.key.match(/^k$/i)):
         key = keys.up;
         break;
 
-      case String(ev.key.match(/l/i)):
+      case String(ev.key.match(/^l$/i)):
         key = keys.right;
         break;
 
-      case String(ev.key.match(/h/i)):
+      case String(ev.key.match(/^h$/i)):
         key = keys.left;
         break;
     }
@@ -44,7 +44,7 @@ function registerKeybinds() {
   });
 
   document.addEventListener("keyup", (ev) => {
-    if (!ev.key.match(/[grf]/i)) return;
+    if (!ev.key.match(/^[grf]$/i)) return;
 
     document.body.dispatchEvent(keys.down);
   });
