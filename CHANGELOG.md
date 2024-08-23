@@ -1,5 +1,18 @@
 # gregmat-buddy
 
+## 0.3.0
+
+### Minor Changes
+
+- 14b8dd8: added keybindings to gregmat vocab mountain
+
+  - added automatic move to next word on complete
+  - added vim keybindings
+
+### Patch Changes
+
+- 7f8b6ad: fixed function running on all prepswift urls
+
 ## 0.2.1
 
 ### Patch Changes
