@@ -38,3 +38,11 @@ export function waitForNoElement(selector: string) {
     });
   });
 }
+
+export function registerUrl(url: string, callback: Function) {
+  if (window.location.toString().search(url) != -1) callback();
+
+  window.addEventListener("locationChange", () => {
+    if (window.location.toString().search(url) != -1) callback();
+  });
+}

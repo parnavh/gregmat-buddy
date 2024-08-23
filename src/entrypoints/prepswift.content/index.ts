@@ -1,13 +1,10 @@
-import { waitForElement } from "@/utils";
+import { waitForElement, registerUrl } from "@/utils";
 
 export default defineContentScript({
   matches: ["*://*.prepswift.com/*"],
   runAt: "document_idle",
   main() {
-    if (window.location.toString().search("gre-quant")) main();
-    window.addEventListener("locationChange", () => {
-      if (window.location.toString().search("gre-quant")) main();
-    });
+    registerUrl("gre-quant", main);
   },
 });
 
