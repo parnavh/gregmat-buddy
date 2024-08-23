@@ -16,9 +16,17 @@ const keys = {
   right: eventGenerator("ArrowRight"),
 } as const;
 
+function isNotesFocused() {
+  const note = document.getElementById("note");
+
+  return document.activeElement == note;
+}
+
 function registerKeybinds() {
   document.addEventListener("keydown", (ev) => {
     let key = null;
+
+    if (isNotesFocused()) return;
 
     switch (ev.key) {
       case String(ev.key.match(/^j$/i)):
@@ -45,6 +53,8 @@ function registerKeybinds() {
 
   document.addEventListener("keyup", (ev) => {
     if (!ev.key.match(/^[grf]$/i)) return;
+
+    if (isNotesFocused()) return;
 
     document.body.dispatchEvent(keys.down);
   });
