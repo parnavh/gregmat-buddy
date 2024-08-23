@@ -1,5 +1,11 @@
 # gregmat-buddy
 
+## 0.3.2
+
+### Patch Changes
+
+- 6a8b0cf: fixed keybinds active while typing notes
+
 ## 0.3.1
 
 ### Patch Changes
