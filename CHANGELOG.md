@@ -1,5 +1,11 @@
 # gregmat-buddy
 
+## 0.3.4
+
+### Patch Changes
+
+- 4eaccd7: fixed popup link v2
+
 ## 0.3.3
 
 ### Patch Changes
