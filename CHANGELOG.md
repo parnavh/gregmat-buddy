@@ -1,5 +1,11 @@
 # gregmat-buddy
 
+## 0.3.5
+
+### Patch Changes
+
+- 89609ee: fixed multiple jumps from one keypress on vocab mountain
+
 ## 0.3.4
 
 ### Patch Changes
