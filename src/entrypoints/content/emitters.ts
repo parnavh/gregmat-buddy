@@ -1,12 +1,21 @@
 import { VIMEO_SELECTOR } from "@/constants";
 import { waitForElement, waitForNoElement } from "@/utils";
 
+function sanitizedUrl(url: string) {
+  const queryIndex = url.indexOf("?");
+
+  if (queryIndex == -1) return url;
+
+  return url.substring(0, queryIndex);
+}
+
 export function registerLocationChange() {
-  let currentUrl = location.href;
+  let currentUrl = sanitizedUrl(location.href);
 
   setInterval(() => {
-    if (location.href !== currentUrl) {
-      currentUrl = location.href;
+    const url = sanitizedUrl(location.href);
+    if (url !== currentUrl) {
+      currentUrl = url;
       window.dispatchEvent(new Event("locationChange"));
     }
   }, 500);
