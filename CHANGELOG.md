@@ -1,5 +1,12 @@
 # gregmat-buddy
 
+## 0.3.6
+
+### Patch Changes
+
+- cc39a4b: added stats for vocab mountain
+- 0cf2d69: improved keybindings
+
 ## 0.3.5
 
 ### Patch Changes
