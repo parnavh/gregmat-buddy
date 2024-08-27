@@ -1,5 +1,6 @@
 export async function main() {
   registerKeybinds();
+  showKeybinds();
   addStats();
 }
 
@@ -11,10 +12,14 @@ function eventGenerator(key: KeyboardEvent["key"]) {
 }
 
 const keys = {
-  down: eventGenerator("ArrowDown"),
-  up: eventGenerator("ArrowUp"),
-  left: eventGenerator("ArrowLeft"),
-  right: eventGenerator("ArrowRight"),
+  j: eventGenerator("ArrowDown"),
+  k: eventGenerator("ArrowUp"),
+  h: eventGenerator("ArrowLeft"),
+  l: eventGenerator("ArrowRight"),
+  m: eventGenerator("d"),
+  ",": eventGenerator("s"),
+  correct: eventGenerator("g"),
+  incorrect: eventGenerator("r"),
 } as const;
 
 function isNotesFocused() {
@@ -25,25 +30,30 @@ function isNotesFocused() {
 
 function registerKeybinds() {
   document.addEventListener("keydown", (ev) => {
+    if (!ev.key.match(/^[hjkluim,]$/i) || isNotesFocused()) return;
+
+    const eventKey = ev.key.toLowerCase();
+
     let key = null;
 
-    if (isNotesFocused()) return;
-
-    switch (ev.key) {
-      case String(ev.key.match(/^j$/i)):
-        key = keys.down;
+    switch (eventKey) {
+      case "h":
+      case "j":
+      case "k":
+      case "l":
+      case "m":
+      case ",":
+        key = keys[eventKey];
         break;
 
-      case String(ev.key.match(/^k$/i)):
-        key = keys.up;
+      case "u":
+        document.body.dispatchEvent(keys.correct);
+        key = keys.j;
         break;
 
-      case String(ev.key.match(/^l$/i)):
-        key = keys.right;
-        break;
-
-      case String(ev.key.match(/^h$/i)):
-        key = keys.left;
+      case "i":
+        document.body.dispatchEvent(keys.incorrect);
+        key = keys.j;
         break;
     }
 
@@ -51,14 +61,48 @@ function registerKeybinds() {
 
     document.body.dispatchEvent(key);
   });
+}
 
-  document.addEventListener("keyup", (ev) => {
-    if (!ev.key.match(/^[grf]$/i)) return;
+async function showKeybinds() {
+  await waitForElement("button[tabindex='-1']");
 
-    if (isNotesFocused()) return;
+  const shown = !!document.getElementById("buddy-nav");
 
-    document.body.dispatchEvent(keys.down);
+  if (shown) return;
+
+  const container = document.querySelector(
+    ".flex.w-full.flex-row.flex-wrap.justify-center.space-x-6.mt-6.gap-y-2.gap-x-2"
+  );
+
+  if (!container || container.childNodes.length < 6) return;
+  const nodes = container.childNodes;
+
+  const vimNav = nodes[0].cloneNode(true) as HTMLDivElement;
+  vimNav.setAttribute("id", "buddy-nav");
+  vimNav.classList.add("font-semibold");
+
+  let idx = 0;
+
+  vimNav.querySelectorAll("button").forEach((button) => {
+    button.innerHTML = ["k", "h", "j", "l"][idx++];
   });
+
+  idx = 0;
+
+  for (let i = 1; i < 6; i++) {
+    if (i == 4) continue;
+    const copy = (nodes[i] as HTMLDivElement)
+      .querySelector(".flex.flex-row.justify-center.w-full")
+      ?.cloneNode(true);
+
+    if (!copy) return;
+
+    copy.childNodes[0].childNodes[0].textContent = ["m", "u", "i", ","][idx++];
+
+    nodes[i].childNodes[0].appendChild(copy);
+  }
+
+  container.insertBefore(vimNav, nodes[1]);
 }
 
 async function addStats() {
