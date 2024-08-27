@@ -119,7 +119,7 @@ async function addStats() {
   if (!summary) {
     summary = document.createElement("div");
     summary.textContent = "loading...";
-    summary.classList.add("text-lg", "dark:text-gray-50", "text-center");
+    summary.classList.add("text-lg", "dark:text-gray-50", "text-center", "mb-6");
     summary.setAttribute("id", "buddy-stats");
     parent.prepend(summary);
   }
@@ -194,7 +194,9 @@ function getVocabStatsText(correct: number, total: number) {
     color = "#4caf50"; // text-green-500
   }
 
-  return `Stats: <div class="flex">Accuracy: ${correct}/${total} | <p class="font-semibold ml-1" style="color: ${color};"> ${percentage.toFixed(
-    2
-  )}% </p> </div>`;
+  return `<h3 class="font-semibold underline mb-2">Stats</h3>
+    <ul>
+      <li>Accuracy: ${correct}/${total} | <span class="font-semibold ml-1" style="color: ${color};">${percentage.toFixed(2)}%</span></li>
+    </ul>
+  `;
 }
