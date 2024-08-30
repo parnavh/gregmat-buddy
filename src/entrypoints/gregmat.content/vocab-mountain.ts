@@ -20,6 +20,7 @@ const keys = {
   ",": eventGenerator("s"),
   correct: eventGenerator("g"),
   incorrect: eventGenerator("r"),
+  o: eventGenerator("w"),
 } as const;
 
 function isNotesFocused() {
@@ -30,7 +31,7 @@ function isNotesFocused() {
 
 function registerKeybinds() {
   document.addEventListener("keydown", (ev) => {
-    if (!ev.key.match(/^[hjkluim,]$/i) || isNotesFocused()) return;
+    if (!ev.key.match(/^[hjkluionm,.]$/i) || isNotesFocused()) return;
 
     const eventKey = ev.key.toLowerCase();
 
@@ -42,18 +43,21 @@ function registerKeybinds() {
       case "k":
       case "l":
       case "m":
+      case "o":
       case ",":
         key = keys[eventKey];
         break;
 
       case "u":
-        document.body.dispatchEvent(keys.correct);
         key = keys.j;
+      case "n":
+        document.body.dispatchEvent(keys.correct);
         break;
 
       case "i":
-        document.body.dispatchEvent(keys.incorrect);
         key = keys.j;
+      case ".":
+        document.body.dispatchEvent(keys.incorrect);
         break;
     }
 
@@ -79,25 +83,29 @@ async function showKeybinds() {
 
   const vimNav = nodes[0].cloneNode(true) as HTMLDivElement;
   vimNav.setAttribute("id", "buddy-nav");
-  vimNav.classList.add("font-semibold");
+
+  const text = vimNav.querySelector("p");
+  text && (text.innerHTML = "Vim Navigation");
 
   let idx = 0;
 
   vimNav.querySelectorAll("button").forEach((button) => {
-    button.innerHTML = ["k", "h", "j", "l"][idx++];
+    button.innerHTML = ["K", "H", "J", "L"][idx++];
+    button.classList.add("font-semibold");
   });
 
   idx = 0;
 
   for (let i = 1; i < 6; i++) {
-    if (i == 4) continue;
     const copy = (nodes[i] as HTMLDivElement)
       .querySelector(".flex.flex-row.justify-center.w-full")
       ?.cloneNode(true);
 
     if (!copy) return;
 
-    copy.childNodes[0].childNodes[0].textContent = ["m", "u", "i", ","][idx++];
+    copy.childNodes[0].childNodes[0].textContent = ["M", "U", "I", "O", ","][
+      idx++
+    ];
 
     nodes[i].childNodes[0].appendChild(copy);
   }
@@ -119,7 +127,12 @@ async function addStats() {
   if (!summary) {
     summary = document.createElement("div");
     summary.textContent = "loading...";
-    summary.classList.add("text-lg", "dark:text-gray-50", "text-center", "mb-6");
+    summary.classList.add(
+      "text-lg",
+      "dark:text-gray-50",
+      "text-center",
+      "mb-6"
+    );
     summary.setAttribute("id", "buddy-stats");
     parent.prepend(summary);
   }
@@ -196,7 +209,9 @@ function getVocabStatsText(correct: number, total: number) {
 
   return `<h3 class="font-semibold underline mb-2">Stats</h3>
     <ul>
-      <li>Accuracy: ${correct}/${total} | <span class="font-semibold ml-1" style="color: ${color};">${percentage.toFixed(2)}%</span></li>
+      <li>Accuracy: ${correct}/${total} | <span class="font-semibold ml-1" style="color: ${color};">${percentage.toFixed(
+    2
+  )}%</span></li>
     </ul>
   `;
 }
