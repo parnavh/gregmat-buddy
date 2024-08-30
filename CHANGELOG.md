@@ -1,5 +1,14 @@
 # gregmat-buddy
 
+## 0.3.7
+
+### Patch Changes
+
+- e1f406c: minor improvements to vocab mountain
+
+  - added extra keybindings
+  - minor style changes
+
 ## 0.3.6
 
 ### Patch Changes
