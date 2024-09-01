@@ -3,6 +3,7 @@
   "description": "Adds quality of life features to gregmat/prepswift",
   "version": "0.3.7",
   "private": false,
+  "type": "module",
   "scripts": {
     "dev": "wxt",
     "dev:firefox": "wxt -b firefox",
@@ -15,11 +16,14 @@
   },
   "devDependencies": {
     "@changesets/cli": "^2.27.7",
+    "@tailwindcss/typography": "^0.5.14",
     "@tsconfig/svelte": "^5.0.4",
     "@types/vimeo__player": "^2.18.3",
     "@wxt-dev/module-svelte": "^1.0.0",
+    "autoprefixer": "^10.4.20",
     "svelte": "^4.2.18",
     "svelte-check": "^3.8.4",
+    "tailwindcss": "^3.4.9",
     "tslib": "^2.6.3",
     "typescript": "^5.5.4",
     "wxt": "^0.19.1"
