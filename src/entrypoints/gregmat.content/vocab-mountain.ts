@@ -75,7 +75,7 @@ async function showKeybinds() {
   if (shown) return;
 
   const container = document.querySelector(
-    ".flex.w-full.flex-row.flex-wrap.justify-center.space-x-6.mt-6.gap-y-2.gap-x-2"
+    ".flex.w-full.flex-row.flex-wrap.justify-center.space-x-6.mt-6.gap-y-2.gap-x-2",
   );
 
   if (!container || container.childNodes.length < 6) return;
@@ -117,7 +117,7 @@ async function addStats() {
   await waitForElement("button[tabindex='-1']");
 
   const parent = document.querySelector(
-    ".w-full.flex.flex-col.justify-start.items-center.space-y-2"
+    ".w-full.flex.flex-col.justify-start.items-center.space-y-2",
   );
 
   if (!parent) return;
@@ -131,14 +131,14 @@ async function addStats() {
       "text-lg",
       "dark:text-gray-50",
       "text-center",
-      "mb-6"
+      "mb-6",
     );
     summary.setAttribute("id", "buddy-stats");
     parent.prepend(summary);
   }
 
   const day = document.querySelector(
-    "h3[class='font-semibold text-lg dark:text-gray-50']"
+    "h3[class='font-semibold text-lg dark:text-gray-50']",
   );
 
   if (!day) return;
@@ -210,8 +210,8 @@ function getVocabStatsText(correct: number, total: number) {
   return `<h3 class="font-semibold underline mb-2">Stats</h3>
     <ul>
       <li>Accuracy: ${correct}/${total} | <span class="font-semibold ml-1" style="color: ${color};">${percentage.toFixed(
-    2
-  )}%</span></li>
+        2,
+      )}%</span></li>
     </ul>
   `;
 }

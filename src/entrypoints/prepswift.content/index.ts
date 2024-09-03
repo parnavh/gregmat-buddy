@@ -31,7 +31,7 @@ async function main() {
   calculate_time(container, summary);
 
   const observer = new MutationObserver(() =>
-    calculate_time(container, summary)
+    calculate_time(container, summary),
   );
 
   document
@@ -43,7 +43,7 @@ async function main() {
 
 async function calculate_time(
   container: Element,
-  summary: HTMLParagraphElement
+  summary: HTMLParagraphElement,
 ) {
   let rootTotalCount = 0,
     rootDoneCount = 0,
@@ -53,28 +53,28 @@ async function calculate_time(
   await waitForElement(".video-duration-badge");
 
   Array.from(container.children).forEach((div) => {
-    let title = div.querySelector("h2");
+    const title = div.querySelector("h2");
 
     if (!title) return;
 
-    let all = div.querySelectorAll(".video-duration-badge");
-    let done = div.querySelectorAll(".video-duration-badge.text-purple-400");
-    let allTimestamps = div.querySelectorAll(".video-duration-badge");
-    let doneTimestamps = div.querySelectorAll(
-      ".video-duration-badge.text-purple-400"
+    const all = div.querySelectorAll(".video-duration-badge");
+    const done = div.querySelectorAll(".video-duration-badge.text-purple-400");
+    const allTimestamps = div.querySelectorAll(".video-duration-badge");
+    const doneTimestamps = div.querySelectorAll(
+      ".video-duration-badge.text-purple-400",
     );
 
     let totalSecs = 0,
       doneSecs = 0;
 
     allTimestamps.forEach((a) => {
-      let s = (a.textContent ?? ":").split(":");
-      totalSecs += parseInt(s[0]) * 60 + parseInt(s[1]);
+      const s = (a.textContent ?? ":").split(":");
+      totalSecs += Number.parseInt(s[0]) * 60 + Number.parseInt(s[1]);
     });
 
     doneTimestamps.forEach((a) => {
-      let s = (a.textContent ?? ":").split(":");
-      doneSecs += parseInt(s[0]) * 60 + parseInt(s[1]);
+      const s = (a.textContent ?? ":").split(":");
+      doneSecs += Number.parseInt(s[0]) * 60 + Number.parseInt(s[1]);
     });
 
     rootTotalSecs += totalSecs;
@@ -103,21 +103,15 @@ function getText(
   doneCount: number,
   totalCount: number,
   doneSecs: number,
-  totalSecs: number
+  totalSecs: number,
 ): string {
-  if (doneCount == totalCount) {
+  if (doneCount === totalCount) {
     return "Done!";
   }
 
-  if (doneCount == 0) {
-    return `Lectures: ${totalCount} | Mins: ${(totalSecs / 60).toFixed(
-      2
-    )} | Hours: ${(totalSecs / 3600).toFixed(2)}`;
+  if (doneCount === 0) {
+    return `Lectures: ${totalCount} | Mins: ${(totalSecs / 60).toFixed(2)} | Hours: ${(totalSecs / 3600).toFixed(2)}`;
   }
 
-  return `Lectures: ${doneCount}/${totalCount} | Mins: ${(
-    doneSecs / 60
-  ).toFixed(2)}/${(totalSecs / 60).toFixed(2)} | Hours: ${(
-    doneSecs / 3600
-  ).toFixed(2)}/${(totalSecs / 3600).toFixed(2)}`;
+  return `Lectures: ${doneCount}/${totalCount} | Mins: ${(doneSecs / 60).toFixed(2)}/${(totalSecs / 60).toFixed(2)}| Hours: ${(doneSecs / 3600).toFixed(2)}/${(totalSecs / 3600).toFixed(2)}`;
 }
