@@ -31,7 +31,7 @@ async function main() {
   calculate_time(container, summary);
 
   const observer = new MutationObserver(() =>
-    calculate_time(container, summary),
+    calculate_time(container, summary)
   );
 
   document
@@ -43,7 +43,7 @@ async function main() {
 
 async function calculate_time(
   container: Element,
-  summary: HTMLParagraphElement,
+  summary: HTMLParagraphElement
 ) {
   let rootTotalCount = 0,
     rootDoneCount = 0,
@@ -61,7 +61,7 @@ async function calculate_time(
     const done = div.querySelectorAll(".video-duration-badge.text-purple-400");
     const allTimestamps = div.querySelectorAll(".video-duration-badge");
     const doneTimestamps = div.querySelectorAll(
-      ".video-duration-badge.text-purple-400",
+      ".video-duration-badge.text-purple-400"
     );
 
     let totalSecs = 0,
@@ -103,15 +103,21 @@ function getText(
   doneCount: number,
   totalCount: number,
   doneSecs: number,
-  totalSecs: number,
+  totalSecs: number
 ): string {
   if (doneCount === totalCount) {
     return "Done!";
   }
 
   if (doneCount === 0) {
-    return `Lectures: ${totalCount} | Mins: ${(totalSecs / 60).toFixed(2)} | Hours: ${(totalSecs / 3600).toFixed(2)}`;
+    return `Lectures: ${totalCount} | Mins: ${(totalSecs / 60).toFixed(
+      2
+    )} | Hours: ${(totalSecs / 3600).toFixed(2)}`;
   }
 
-  return `Lectures: ${doneCount}/${totalCount} | Mins: ${(doneSecs / 60).toFixed(2)}/${(totalSecs / 60).toFixed(2)}| Hours: ${(doneSecs / 3600).toFixed(2)}/${(totalSecs / 3600).toFixed(2)}`;
+  return `Lectures: ${doneCount}/${totalCount} | Mins: ${(
+    doneSecs / 60
+  ).toFixed(2)}/${(totalSecs / 60).toFixed(2)}| Hours: ${(
+    doneSecs / 3600
+  ).toFixed(2)}/${(totalSecs / 3600).toFixed(2)}`;
 }

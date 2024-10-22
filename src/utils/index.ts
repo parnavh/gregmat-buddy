@@ -39,10 +39,18 @@ export function waitForNoElement(selector: string) {
   });
 }
 
+export function sanitizedUrl(url: string) {
+  const queryIndex = url.indexOf("?");
+
+  if (queryIndex == -1) return url;
+
+  return url.substring(0, queryIndex);
+}
+
 export function registerUrl(url: string, callback: Function) {
-  if (window.location.toString().search(url) != -1) callback();
+  if (sanitizedUrl(window.location.toString()).search(url) != -1) callback();
 
   window.addEventListener("locationChange", () => {
-    if (window.location.toString().search(url) != -1) callback();
+    if (sanitizedUrl(window.location.toString()).search(url) != -1) callback();
   });
 }

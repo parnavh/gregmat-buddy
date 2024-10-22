@@ -1,13 +1,5 @@
 import { VIMEO_SELECTOR } from "@/constants";
-import { waitForElement, waitForNoElement } from "@/utils";
-
-function sanitizedUrl(url: string) {
-  const queryIndex = url.indexOf("?");
-
-  if (queryIndex == -1) return url;
-
-  return url.substring(0, queryIndex);
-}
+import { sanitizedUrl, waitForElement, waitForNoElement } from "@/utils";
 
 export function registerLocationChange() {
   let currentUrl = sanitizedUrl(location.href);
