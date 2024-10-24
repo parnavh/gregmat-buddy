@@ -14,6 +14,9 @@ importers:
       fast-glob:
         specifier: ^3.3.2
         version: 3.3.2
+      lucide-svelte:
+        specifier: ^0.453.0
+        version: 0.453.0(svelte@4.2.19)
     devDependencies:
       '@biomejs/biome':
         specifier: 1.8.3
@@ -1733,6 +1736,11 @@ packages:
 
   lru-cache@4.1.5:
     resolution: {integrity: sha512-sWZlbEP2OsHNkXrMl5GYk/jKk70MBng6UU4YI/qGDYbgf6YbP4EvmqISbXCoJiRKs+1bSpFHVgQxvJ17F2li5g==}
+
+  lucide-svelte@0.453.0:
+    resolution: {integrity: sha512-K+eE2ZeE00ThIEbAmZB3Hq0sVS+1ZLj+7nqtJvN0Xrh/KZnfnEChG+do80sctqXQEE+iG1dA2T+5fVcJS1awfA==}
+    peerDependencies:
+      svelte: ^3 || ^4 || ^5.0.0-next.42
 
   magic-string@0.30.12:
     resolution: {integrity: sha512-Ea8I3sQMVXr8JhN4z+H/d8zwo+tYDgHE9+5G4Wnrwhs0gaK9fXTKx0Tw5Xwsd/bCPTTZNRAdpyzvoeORe9LYpw==}
@@ -4508,6 +4516,10 @@ snapshots:
     dependencies:
       pseudomap: 1.0.2
       yallist: 2.1.2
+
+  lucide-svelte@0.453.0(svelte@4.2.19):
+    dependencies:
+      svelte: 4.2.19
 
   magic-string@0.30.12:
     dependencies:
