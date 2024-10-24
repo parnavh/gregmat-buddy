@@ -1,4 +1,5 @@
 import { waitForElement, registerUrl } from "@/utils";
+import { config as config_store } from "@/utils/storage";
 
 export default defineContentScript({
   matches: ["*://*.prepswift.com/*"],
@@ -9,6 +10,9 @@ export default defineContentScript({
 });
 
 async function main() {
+  const config = await config_store.getValue();
+  if (!config.prepswiftStats) return;
+
   await waitForElement(".htmlContent");
   const container = document.querySelector("div[class='space-y-6 my-10']");
   const header = document.querySelector(".htmlContent");

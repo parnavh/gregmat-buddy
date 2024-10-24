@@ -1,7 +1,12 @@
+import { config as config_store } from "@/utils/storage";
 export async function main() {
+  addStats();
+
+  const config = await config_store.getValue();
+  if (!config.vocabMountain) return;
+
   registerKeybinds();
   showKeybinds();
-  addStats();
 }
 
 function eventGenerator(key: KeyboardEvent["key"]) {
