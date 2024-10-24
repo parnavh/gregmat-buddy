@@ -1,5 +1,15 @@
 # gregmat-buddy
 
+## 0.4.0
+
+### Minor Changes
+
+- 5007515: added options page
+
+### Patch Changes
+
+- cc06d10: fixed double registration of vocab mountain keybinds
+
 ## 0.3.7
 
 ### Patch Changes
