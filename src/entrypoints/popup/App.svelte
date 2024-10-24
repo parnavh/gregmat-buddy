@@ -8,11 +8,16 @@
     </a>
   </div>
 
+  <p>All the best!</p>
+
+  <p class="read-the-docs">
+    <a target="_blank" href="/options.html">Extension Options</a> - Configure your
+    Preferences
+  </p>
+
   <p class="read-the-docs">
     Found a bug or have a feature request?
-    <a href={import.meta.env.VITE_GITHUB_URL + "/issues/new/choose"}>
-      Open an Issue
-    </a>
+    <a href={import.meta.env.VITE_GITHUB_URL + "/issues"}> Open an Issue </a>
   </p>
 
   <p>

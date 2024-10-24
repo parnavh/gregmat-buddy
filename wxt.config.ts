@@ -1,4 +1,5 @@
 import { defineConfig } from "wxt";
+import path from "path";
 
 export default defineConfig({
   srcDir: "src",
@@ -7,4 +8,11 @@ export default defineConfig({
     name: "GregMat Buddy",
     permissions: ["storage"],
   },
+  vite: () => ({
+    resolve: {
+      alias: {
+        "@/": path.resolve("./src/"),
+      },
+    },
+  }),
 });

@@ -1,8 +1,15 @@
 import { VIMEO_SELECTOR } from "@/constants";
-import { seenBanners, vimeoPlaybackRate } from "@/utils/storage";
+import {
+  config as config_store,
+  seenBanners,
+  vimeoPlaybackRate,
+} from "@/utils/storage";
 import Player from "@vimeo/player";
 
-export function vimeoChanges() {
+export async function vimeoChanges() {
+  const config = await config_store.getValue();
+  if (!config.playbackRate) return;
+
   window.addEventListener("vimeoAdded", async () => {
     const iframe = document.querySelector(VIMEO_SELECTOR);
 
@@ -19,6 +26,9 @@ export function vimeoChanges() {
 }
 
 export async function removeBanner() {
+  const config = await config_store.getValue();
+  if (!config.banner) return;
+
   const banner = document.querySelector(".px-3.py-3.mx-auto.max-w-7xl");
   if (!banner) return;
 
