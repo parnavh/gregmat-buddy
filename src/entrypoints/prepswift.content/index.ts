@@ -6,6 +6,8 @@ export default defineContentScript({
   runAt: "document_idle",
   main() {
     registerUrl("gre-quant", main);
+    registerUrl("gre-verbal", main);
+    registerUrl("gre-writing", main);
   },
 });
 
@@ -13,23 +15,22 @@ async function main() {
   const config = await config_store.getValue();
   if (!config.prepswiftStats) return;
 
-  await waitForElement(".htmlContent");
+  await waitForElement("div[class='flex items-center justify-end gap-4']");
   const container = document.querySelector("div[class='space-y-6 my-10']");
-  const header = document.querySelector(".htmlContent");
 
-  if (!container || !header) {
+  if (!container) {
     return;
   }
 
   let summary = document.getElementById("buddy-stats") as HTMLParagraphElement;
 
   if (!summary) {
-    summary = header
-      .querySelector("p:nth-child(2)")!
-      .cloneNode() as HTMLParagraphElement;
+    summary = document.createElement("p");
     summary.textContent = "loading...";
     summary.setAttribute("id", "buddy-stats");
-    header.appendChild(summary);
+    summary.style.setProperty("text-align", "center");
+    summary.style.setProperty("margin-top", "1rem");
+    container.parentNode?.insertBefore(summary, container);
   }
 
   calculate_time(container, summary);
