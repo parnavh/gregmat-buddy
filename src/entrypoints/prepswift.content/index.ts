@@ -1,10 +1,11 @@
 import { waitForElement, registerUrl } from "@/utils";
 import { config as config_store } from "@/utils/storage";
+import { main as autocomplete } from "./autocomplete";
 
 export default defineContentScript({
   matches: ["*://*.prepswift.com/*"],
-  runAt: "document_idle",
   main() {
+    autocomplete();
     registerUrl("gre-quant", main);
     registerUrl("gre-verbal", main);
     registerUrl("gre-writing", main);

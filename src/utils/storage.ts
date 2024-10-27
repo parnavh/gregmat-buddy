@@ -12,6 +12,7 @@ type ConfigType = {
   playbackRate: boolean;
   vocabMountain: boolean;
   prepswiftStats: boolean;
+  prepswiftAutoComplete: boolean;
 };
 
 export const config = storage.defineItem<ConfigType>("local:config", {
@@ -20,6 +21,7 @@ export const config = storage.defineItem<ConfigType>("local:config", {
     playbackRate: true,
     vocabMountain: true,
     prepswiftStats: true,
+    prepswiftAutoComplete: true,
   },
   version: 1,
 });

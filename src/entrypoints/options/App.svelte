@@ -45,6 +45,12 @@
           tooltip: "Shows total time and lectures completed",
           checked: config.prepswiftStats,
         },
+        {
+          id: "prepswiftAutoComplete",
+          text: "Auto mark lecture on completion",
+          tooltip: "Marks lecture as completed when video ends",
+          checked: config.prepswiftAutoComplete,
+        },
       ],
     } as const;
 
