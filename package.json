@@ -1,7 +1,7 @@
 {
   "name": "gregmat-buddy",
   "description": "Adds quality of life features to gregmat/prepswift",
-  "version": "0.4.0",
+  "version": "0.4.1",
   "private": false,
   "type": "module",
   "scripts": {
