@@ -1,5 +1,12 @@
 # gregmat-buddy
 
+## 0.4.1
+
+### Patch Changes
+
+- 834a894: added support for prepswift verbal and writing
+- bdde865: added support for marking lecture complete when video ends
+
 ## 0.4.0
 
 ### Minor Changes
