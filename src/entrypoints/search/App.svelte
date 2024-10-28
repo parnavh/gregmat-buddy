@@ -106,12 +106,16 @@
             </a>
             <Popover.Root>
               <Popover.Trigger
-                ><span class="flex items-center text-gray-600">
+                ><span
+                  class="flex items-center text-gray-600 dark:text-gray-400"
+                >
                   <Cog size={18} /> Preferences
                   <div></div>
                 </span></Popover.Trigger
               >
-              <Popover.Content>
+              <Popover.Content
+                class="rounded-xl dark:bg-slate-700 dark:text-gray-300 dark:dark"
+              >
                 <RadioGroup.Root bind:value={group}>
                   <div class="flex items-center space-x-2 justify-between mr-1">
                     <Label for="GRE">GRE Words</Label>
@@ -122,7 +126,7 @@
                     <RadioGroup.Item value="TOEFL" id="TOEFL" />
                   </div>
                 </RadioGroup.Root>
-                <hr class="my-2" />
+                <hr class="my-2 dark:border-gray-500" />
                 <div class="w-[250px]">
                   <div class="flex items-center justify-between">
                     <p>Search by name</p>
