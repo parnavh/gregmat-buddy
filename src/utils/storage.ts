@@ -30,6 +30,7 @@ export type vocabMountain = Array<
   Array<{
     title: string;
     description: string;
+    text: string;
     pronunciation: string;
   }>
 >;

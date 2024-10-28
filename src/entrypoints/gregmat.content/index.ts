@@ -36,11 +36,16 @@ async function storeVocab() {
     const processed = json[7].map((idx: number) =>
       json[json[idx].mountain_contents]
         .map((entry: number) => json[entry])
-        .map((word: any) => ({
-          title: json[word.title],
-          description: json[word.description],
-          pronunciation: json[word.pronunciation],
-        }))
+        .map((word: any) => {
+          const temp = document.createElement("div");
+          temp.innerHTML = json[word.description];
+          return {
+            title: json[word.title],
+            description: json[word.description],
+            pronunciation: json[word.pronunciation],
+            text: temp.textContent?.replaceAll(/[\n\t]+/g, " ").trim() ?? "",
+          };
+        })
     );
 
     lookup[idx].setValue(processed);

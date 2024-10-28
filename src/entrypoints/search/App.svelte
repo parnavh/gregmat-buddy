@@ -5,7 +5,7 @@
   import Fuse from "fuse.js";
 
   let data: vocabMountain = [];
-  let search = "lugubrious";
+  let search = "";
 
   async function get_data() {
     const val = await greVocabMountain.getValue();
@@ -18,10 +18,14 @@
 
   let fuse;
 
-  $: fuse = new Fuse(data.flat(), { keys: ["title"], threshold: 0.4 });
+  $: fuse = new Fuse(data.flat(), {
+    keys: ["title", "text"],
+    threshold: 0.2,
+    ignoreLocation: true,
+  });
 
   let result;
-  $: result = fuse.search(search);
+  $: result = fuse.search(search, { limit: 30 });
 </script>
 
 <main class="h-full dark:bg-slate-800 dark:text-white">
@@ -60,15 +64,13 @@
         </div>
 
         <div class="w-full gap-4 grid" use:autoAnimate>
-          {#if search != ""}
-            {#each result as word}
-              <Card
-                title={word.item.title}
-                description={word.item.description}
-                pronunciation={word.item.pronunciation}
-              />
-            {/each}
-          {/if}
+          {#each result as word}
+            <Card
+              title={word.item.title}
+              description={word.item.description}
+              pronunciation={word.item.pronunciation}
+            />
+          {/each}
         </div>
         <div class="mb-24"></div>
       {:catch}
