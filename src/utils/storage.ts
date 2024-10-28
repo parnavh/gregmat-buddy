@@ -25,3 +25,23 @@ export const config = storage.defineItem<ConfigType>("local:config", {
   },
   version: 1,
 });
+
+type vocabMountain = Array<
+  Array<{
+    title: string;
+    description: string;
+    pronunciation: string;
+  }>
+>;
+
+export const greVocabMountain = storage.defineItem<vocabMountain | null>(
+  "local:greVocabMountain",
+  {
+    fallback: null,
+  }
+);
+
+export const toeflVocabMountain = storage.defineItem<vocabMountain | null>(
+  "local:toeflVocabMountain",
+  { fallback: null }
+);
