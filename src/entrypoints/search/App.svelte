@@ -1,26 +1,35 @@
-<script type="ts">
-  import { greVocabMountain } from "@/utils/storage";
+<script lang="ts">
+  import { greVocabMountain, type vocabMountain } from "@/utils/storage";
   import { Card } from "./card";
   import autoAnimate from "@formkit/auto-animate";
-  import clsx from "clsx";
+  import Fuse from "fuse.js";
+
+  let data: vocabMountain = [];
+  let search = "lugubrious";
 
   async function get_data() {
-    const data = await greVocabMountain.getValue();
+    const val = await greVocabMountain.getValue();
 
-    if (data === null) throw new Error("No data loaded!");
+    if (val === null) throw new Error("No data loaded!");
 
-    return data;
+    data = val;
+    return val;
   }
 
-  let search = "";
+  let fuse;
+
+  $: fuse = new Fuse(data.flat(), { keys: ["title"], threshold: 0.4 });
+
+  let result;
+  $: result = fuse.search(search);
 </script>
 
 <main class="h-full dark:bg-slate-800 dark:text-white">
-  <div class={clsx(search ? "h-full" : "h-lvh", "grid place-items-center")}>
+  <div class="h-lvh grid place-items-center">
     <div class="grid place-items-center gap-4 w-[700px]">
       {#await get_data()}
         <p>loading...</p>
-      {:then groups}
+      {:then}
         <div class="mb-24"></div>
         <div id="search-bar" class="w-full relative">
           <div
@@ -50,21 +59,18 @@
           />
         </div>
 
-        <div class="w-full" use:autoAnimate>
+        <div class="w-full gap-4 grid" use:autoAnimate>
           {#if search != ""}
-            {#each groups[0] as word}
-              <!-- <Card -->
-              <!--   title={word.title} -->
-              <!--   description={word.description} -->
-              <!--   pronunciation={word.pronunciation} -->
-              <!-- /> -->
-              <div>hi</div>
+            {#each result as word}
+              <Card
+                title={word.item.title}
+                description={word.item.description}
+                pronunciation={word.item.pronunciation}
+              />
             {/each}
           {/if}
         </div>
-        {#if !search}
-          <div class="mb-24"></div>
-        {/if}
+        <div class="mb-24"></div>
       {:catch}
         <p>err</p>
       {/await}

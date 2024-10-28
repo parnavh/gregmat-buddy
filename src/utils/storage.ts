@@ -26,7 +26,7 @@ export const config = storage.defineItem<ConfigType>("local:config", {
   version: 1,
 });
 
-type vocabMountain = Array<
+export type vocabMountain = Array<
   Array<{
     title: string;
     description: string;

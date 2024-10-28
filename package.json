@@ -37,6 +37,7 @@
     "@formkit/auto-animate": "^0.8.2",
     "@vimeo/player": "^2.24.0",
     "fast-glob": "^3.3.2",
+    "fuse.js": "^7.0.0",
     "lucide-svelte": "^0.453.0"
   }
 }
