@@ -46,3 +46,20 @@ export const toeflVocabMountain = storage.defineItem<vocabMountain | null>(
   "local:toeflVocabMountain",
   { fallback: null }
 );
+
+type searchPreferencesType = {
+  useTitle: boolean;
+  useText: boolean;
+  wordList: "GRE" | "TOEFL";
+};
+
+export const searchPreferences = storage.defineItem<searchPreferencesType>(
+  "local:searchPreferences",
+  {
+    fallback: {
+      useTitle: true,
+      useText: true,
+      wordList: "GRE",
+    },
+  }
+);
