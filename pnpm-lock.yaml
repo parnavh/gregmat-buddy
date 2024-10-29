@@ -14,12 +14,12 @@ importers:
       '@vimeo/player':
         specifier: ^2.24.0
         version: 2.24.0
-      fast-glob:
-        specifier: ^3.3.2
-        version: 3.3.2
       fuse.js:
         specifier: ^7.0.0
         version: 7.0.0
+      lucide-svelte:
+        specifier: ^0.454.0
+        version: 0.454.0(svelte@4.2.19)
     devDependencies:
       '@biomejs/biome':
         specifier: 1.8.3
@@ -48,9 +48,9 @@ importers:
       clsx:
         specifier: ^2.1.1
         version: 2.1.1
-      lucide-svelte:
-        specifier: ^0.453.0
-        version: 0.453.0(svelte@4.2.19)
+      fast-glob:
+        specifier: ^3.3.2
+        version: 3.3.2
       svelte:
         specifier: ^4.2.19
         version: 4.2.19
@@ -1750,8 +1750,8 @@ packages:
   lru-cache@4.1.5:
     resolution: {integrity: sha512-sWZlbEP2OsHNkXrMl5GYk/jKk70MBng6UU4YI/qGDYbgf6YbP4EvmqISbXCoJiRKs+1bSpFHVgQxvJ17F2li5g==}
 
-  lucide-svelte@0.453.0:
-    resolution: {integrity: sha512-K+eE2ZeE00ThIEbAmZB3Hq0sVS+1ZLj+7nqtJvN0Xrh/KZnfnEChG+do80sctqXQEE+iG1dA2T+5fVcJS1awfA==}
+  lucide-svelte@0.454.0:
+    resolution: {integrity: sha512-TgW17HI7M8LeFZ3NpaDp1LwPGBGMVjx/x81TtK+AacEQvmJcqetqeJNeBT18NMEJP9+zi/Wt+Zc8mo44K5Uszw==}
     peerDependencies:
       svelte: ^3 || ^4 || ^5.0.0-next.42
 
@@ -4534,7 +4534,7 @@ snapshots:
       pseudomap: 1.0.2
       yallist: 2.1.2
 
-  lucide-svelte@0.453.0(svelte@4.2.19):
+  lucide-svelte@0.454.0(svelte@4.2.19):
     dependencies:
       svelte: 4.2.19
 

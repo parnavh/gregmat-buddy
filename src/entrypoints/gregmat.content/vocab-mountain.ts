@@ -1,12 +1,51 @@
 import { config as config_store } from "@/utils/storage";
 export async function main() {
   addStats();
+  addSearchLink();
 
   const config = await config_store.getValue();
   if (!config.vocabMountain) return;
 
   registerKeybinds();
   showKeybinds();
+}
+
+async function addSearchLink() {
+  await waitForElement("div[id='buddy-stats']");
+
+  const parent = document.querySelector(
+    ".w-full.flex.flex-col.justify-start.items-center.space-y-2"
+  );
+
+  if (!parent) return;
+
+  let search = document.getElementById("buddy-search") as HTMLDivElement;
+
+  if (search) return;
+
+  search = document.createElement("div");
+  search.textContent = "Search through vocab mountain";
+  search.classList.add(
+    "text-lg",
+    "dark:text-gray-50",
+    "text-center",
+    "text-blue-600",
+    "hover:text-blue-800",
+    "hover:cursor-pointer",
+    "select-none"
+  );
+  search.setAttribute("id", "buddy-search");
+  parent.prepend(search);
+
+  search.addEventListener("click", async () => {
+    const url = window.location.toString();
+    const prefs = await searchPreferences.getValue();
+    await searchPreferences.setValue({
+      ...prefs,
+      wordList: url.indexOf("toefl-vocab-mountain") != -1 ? "TOEFL" : "GRE",
+    });
+    browser.runtime.sendMessage({ type: "redirect", url: "search.html" });
+  });
 }
 
 function eventGenerator(key: KeyboardEvent["key"]) {

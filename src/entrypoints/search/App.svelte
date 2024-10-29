@@ -153,7 +153,7 @@
         </div>
         <div class="mb-24"></div>
       {:catch}
-        <p>err</p>
+        <p>No data loaded! Please open and log into gregmat once</p>
       {/await}
     </div>
   </div>
