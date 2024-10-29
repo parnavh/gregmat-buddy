@@ -31,6 +31,10 @@
         </Tooltip.Content>
       </Tooltip.Root>
     {/if}
-    <Switch {id} bind:checked />
+    <Switch
+      {id}
+      bind:checked
+      class="dark:data-[state=checked]:bg-slate-600 dark:data-[state=unchecked]:bg-slate-300"
+    />
   </div>
 </div>

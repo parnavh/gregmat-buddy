@@ -58,10 +58,10 @@
   }
 </script>
 
-<main class="h-lvh dark:bg-black dark:text-white">
+<main class="h-lvh dark:bg-slate-800 dark:text-white">
   <div class="h-lvh grid place-items-center">
     <Tabs.Root value="general" class="w-[400px]">
-      <Tabs.List class="w-[400px]">
+      <Tabs.List class="w-[400px] dark:bg-slate-700">
         <Tabs.Trigger value="general" class="w-full">General</Tabs.Trigger>
         <Tabs.Trigger value="gregmat" class="w-full">GregMat</Tabs.Trigger>
         <Tabs.Trigger value="prepswift" class="w-full">PrepSwift</Tabs.Trigger>
