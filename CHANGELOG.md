@@ -1,5 +1,15 @@
 # gregmat-buddy
 
+## 0.5.0
+
+### Minor Changes
+
+- 4cd3b26: added vocab search page
+
+### Patch Changes
+
+- 7d5d67c: options page dark theme improved
+
 ## 0.4.1
 
 ### Patch Changes
