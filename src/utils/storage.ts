@@ -25,3 +25,41 @@ export const config = storage.defineItem<ConfigType>("local:config", {
   },
   version: 1,
 });
+
+export type vocabMountain = Array<
+  Array<{
+    title: string;
+    description: string;
+    text: string;
+    pronunciation: string;
+  }>
+>;
+
+export const greVocabMountain = storage.defineItem<vocabMountain | null>(
+  "local:greVocabMountain",
+  {
+    fallback: null,
+  }
+);
+
+export const toeflVocabMountain = storage.defineItem<vocabMountain | null>(
+  "local:toeflVocabMountain",
+  { fallback: null }
+);
+
+type searchPreferencesType = {
+  useTitle: boolean;
+  useText: boolean;
+  wordList: "GRE" | "TOEFL";
+};
+
+export const searchPreferences = storage.defineItem<searchPreferencesType>(
+  "local:searchPreferences",
+  {
+    fallback: {
+      useTitle: true,
+      useText: true,
+      wordList: "GRE",
+    },
+  }
+);

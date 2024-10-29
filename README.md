@@ -1,17 +1,18 @@
 # GregMat Buddy
 
-🏗️ IN ACTIVE DEVELOPMENT
-
 Adds useful quality of life features to the GregMat and PrepSwift website.
 
 ## Features
 
 - Adds progress stats for PrepSwift
+- Allows you to search through vocab mountain
+- Auto marks PrepSwift lectures as complete when the video ends
 - Remembers your playback speed on GregMat and PrepSwift
 - Remembers if you dismissed a banner at the top of the website.
 - Adds custom keybinds for vocab mountain
   - Moves to next word automatically after you mark it
   - Adds vim keybinds for cursor movement
+- Tweak your enabled features in the extension options page
 
 ## Install
 
